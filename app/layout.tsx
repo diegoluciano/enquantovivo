@@ -21,13 +21,13 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       locale: "pt_BR",
       url: siteUrl,
-      images: [{ url: `${siteUrl}/og.png`, width: 1734, height: 907, alt: "Enquanto Vivo — Central de Marca" }],
+      images: [{ url: `${siteUrl}/og-enquanto-vivo-2026.png`, width: 1200, height: 630, alt: "Enquanto Vivo — Central de Marca" }],
     },
     twitter: {
       card: "summary_large_image",
       title: "Enquanto Vivo | Central de Marca",
       description: "Diretrizes, aplicações e arquivos oficiais da identidade visual do canal Enquanto Vivo.",
-      images: [`${siteUrl}/og.png`],
+      images: [`${siteUrl}/og-enquanto-vivo-2026.png`],
     },
   };
 }
