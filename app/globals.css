@@ -210,9 +210,7 @@ img {
 }
 
 .hero-art {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
-    radial-gradient(circle at 30% 25%, #2c2c2c 0, #111 38%, #080808 72%);
+  background: #080808;
   color: var(--color-white);
   display: flex;
   flex-direction: column;
@@ -223,16 +221,33 @@ img {
   position: relative;
 }
 
-.hero-art::before,
-.hero-art::after {
-  border: 1px solid rgba(255,255,255,0.12);
-  content: "";
-  inset: 15% 9%;
+.hero-photo {
+  filter: grayscale(52%) saturate(58%) contrast(1.08) brightness(0.72);
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: 44% center;
   position: absolute;
+  transform: scale(1.015);
+  width: 100%;
+}
+
+.hero-art::before {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.06) 35%, rgba(0,0,0,0.5) 100%),
+    radial-gradient(circle at 50% 46%, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.42) 100%);
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: 0;
 }
 
 .hero-art::after {
-  inset: 24% 18%;
+  border: 1px solid rgba(255,255,255,0.2);
+  content: "";
+  inset: 15% 9%;
+  position: absolute;
+  z-index: 0;
 }
 
 .hero-logo-stage {
@@ -256,7 +271,9 @@ img {
   justify-content: space-between;
   letter-spacing: 0.08em;
   padding-top: 15px;
+  position: relative;
   text-transform: uppercase;
+  z-index: 1;
 }
 
 .section {

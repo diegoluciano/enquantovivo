@@ -165,13 +165,18 @@ export default function Home() {
               <a className="button button-light" href="#downloads">Baixar arquivos</a>
             </div>
           </div>
-          <div className="hero-art" aria-label="Área reservada para fotografia oficial de abertura">
+          <div className="hero-art" aria-label="Fotografia de viajante saltando entre formações rochosas nas montanhas">
+            <img
+              className="hero-photo"
+              src={sitePath("/assets/photography/salto-na-montanha.jpg")}
+              alt=""
+            />
             <div className="hero-logo-stage">
               <img src={sitePath("/assets/brand/logos/branca completa.svg")} alt="Logo completo branco do Enquanto Vivo" />
             </div>
             <div className="hero-art-meta">
               <span>Fotografia oficial</span>
-              <span>Arquivo em preparação</span>
+              <span>Acervo Enquanto Vivo</span>
             </div>
           </div>
         </section>
