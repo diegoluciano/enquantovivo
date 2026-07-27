@@ -29,6 +29,13 @@ const wrongUses = [
   ["Reduzir contraste", "wrong-fade"],
 ];
 
+const logoArcLetters = [
+  ...[..."ENQUANTO"].map((letter, index) => ({ letter, angle: -110 + index * 25 })),
+  ...[..."VIVO"].map((letter, index) => ({ letter, angle: 72 + index * 24 })),
+];
+
+const logoTagline = [..."VIVER É O CAMINHO"];
+
 function AssetPreview({
   asset,
   compact = false,
@@ -469,11 +476,31 @@ export default function Home() {
               </button>
             </div>
             <div className="animated-logo-stage" key={animationRun}>
-              <img className="animation-photo" src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="" />
-              <span className="animation-horizon" aria-hidden="true" />
-              <img className="animation-symbol" src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="" />
-              <img className="animation-lockup" src={sitePath("/assets/brand/logos/branca completa.svg")} alt="Logo animado conceitual Enquanto Vivo" />
-              <span className="animation-caption">Conceito de movimento · 6 segundos</span>
+              <div className="animation-mark" aria-label="Logo animado conceitual Enquanto Vivo">
+                <img className="animation-symbol animation-symbol-base" src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="" />
+                <img className="animation-symbol animation-symbol-top" src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="" />
+                <div className="animation-arc" aria-hidden="true">
+                  {logoArcLetters.map(({ letter, angle }, index) => (
+                    <span
+                      key={`${letter}-${index}`}
+                      style={{
+                        animationDelay: `${0.62 + index * 0.055}s`,
+                        transform: `rotate(${angle}deg)`,
+                      }}
+                    >
+                      {letter}
+                    </span>
+                  ))}
+                </div>
+                <div className="animation-tagline" aria-hidden="true">
+                  {logoTagline.map((letter, index) => (
+                    <span key={`${letter}-${index}`} style={{ animationDelay: `${1.34 + index * 0.035}s` }}>
+                      {letter === " " ? "\u00A0" : letter}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <span className="animation-caption">Fade · ease · zoom · 2 segundos</span>
             </div>
           </div>
           <div className="watermark-section">
