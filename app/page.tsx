@@ -120,7 +120,6 @@ export default function Home() {
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="header-mark" href="#topo" aria-label="Enquanto Vivo — voltar ao início">
           <img src={sitePath("/assets/brand/symbols/cimbolo preto.svg")} alt="" />
-          <span>Enquanto Vivo</span>
         </a>
         <nav id="mobile-navigation" className={`main-nav ${menuOpen ? "is-open" : ""}`} aria-label="Navegação principal">
           {navigation.map(([id, label]) => (
