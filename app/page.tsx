@@ -241,14 +241,37 @@ export default function Home() {
               <p className="eyebrow">Construção e proporções</p>
               <h2>Precisão antes<br />da aplicação.</h2>
             </div>
-            <div className="pending-panel">
-              <span className="status">Conteúdo pendente</span>
+            <div className="technical-panel">
+              <span className="status">Recomendação inicial</span>
               <p>
-                Área de proteção, tamanho mínimo, alinhamentos e unidade de medida ainda não foram fornecidos.
-                Esta seção está preparada para receber a prancha técnica oficial, sem deduções automáticas.
+                Até a validação da prancha oficial, estas proporções funcionam como referência segura para preservar
+                presença, leitura e consistência da marca.
               </p>
-              <div className="protection-placeholder" aria-hidden="true">
-                <div><img src={sitePath("/assets/brand/symbols/cimbolo preto.svg")} alt="" /></div>
+              <div className="clear-space-demo">
+                <span className="measure measure-top">1x</span>
+                <span className="measure measure-right">1x</span>
+                <span className="measure measure-bottom">1x</span>
+                <span className="measure measure-left">1x</span>
+                <div>
+                  <img src={sitePath("/assets/brand/symbols/cimbolo preto.svg")} alt="Demonstração da área de proteção do símbolo" />
+                </div>
+              </div>
+              <div className="technical-specs">
+                <article>
+                  <span>Unidade</span>
+                  <strong>1x</strong>
+                  <p>Equivale a ¼ da altura do símbolo. Mantenha ao menos 1x livre em todos os lados.</p>
+                </article>
+                <article>
+                  <span>Tamanho mínimo</span>
+                  <strong>28 px</strong>
+                  <p>Símbolo: 28 px ou 8 mm. Assinatura completa: 160 px ou 35 mm.</p>
+                </article>
+                <article>
+                  <span>Alinhamento</span>
+                  <strong>Óptico</strong>
+                  <p>Use os limites externos da composição; nunca alinhe considerando apenas o texto.</p>
+                </article>
               </div>
             </div>
           </div>
