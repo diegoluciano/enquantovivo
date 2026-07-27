@@ -62,20 +62,9 @@ export default function Home() {
   const [watermarkOpacity, setWatermarkOpacity] = useState(42);
   const [animationRun, setAnimationRun] = useState(0);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const heroArtRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let parallaxFrame = 0;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-      if (prefersReducedMotion) return;
-      cancelAnimationFrame(parallaxFrame);
-      parallaxFrame = requestAnimationFrame(() => {
-        const parallaxOffset = Math.min(window.scrollY * 0.12, 86);
-        heroArtRef.current?.style.setProperty("--hero-parallax", `${parallaxOffset}px`);
-      });
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -93,7 +82,6 @@ export default function Home() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => {
-      cancelAnimationFrame(parallaxFrame);
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
@@ -177,11 +165,7 @@ export default function Home() {
               <a className="button button-light" href="#downloads">Baixar arquivos</a>
             </div>
           </div>
-          <div
-            className="hero-art"
-            ref={heroArtRef}
-            aria-label="Fotografia de viajante saltando entre formações rochosas nas montanhas"
-          >
+          <div className="hero-art" aria-label="Fotografia de viajante saltando entre formações rochosas nas montanhas">
             <img
               className="hero-photo"
               src={sitePath("/assets/photography/salto-na-montanha.jpg")}
@@ -420,10 +404,9 @@ export default function Home() {
           </div>
           <div className="format-grid">
             <article className="youtube-frame">
-              <img className="format-photo" src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="" />
+              <img className="format-photo" src={sitePath("/assets/mockups/enquanto-vivo-youtube-banner-2560x1440.png")} alt="" />
               <div className="frame-top"><span>YouTube</span><span>2560 × 1440</span></div>
               <div className="safe-area">
-                <img src={sitePath("/assets/brand/logos/branca completa.svg")} alt="Simulação da área segura do banner com o logo oficial" />
                 <span>Área segura · simulação conceitual</span>
               </div>
             </article>
@@ -564,8 +547,7 @@ export default function Home() {
           </div>
           <div className="mockup-grid">
             <article className="mockup-card mockup-1 mockup-youtube">
-              <img src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="Simulação de banner do YouTube com montanhas" />
-              <img className="mockup-logo" src={sitePath("/assets/brand/logos/branca completa.svg")} alt="" />
+              <img src={sitePath("/assets/mockups/enquanto-vivo-youtube-banner-2560x1440.png")} alt="Simulação de banner do YouTube com Fábio saltando entre formações rochosas" />
               <span>01 · YouTube</span>
             </article>
             <article className="mockup-card mockup-2 mockup-vertical">
