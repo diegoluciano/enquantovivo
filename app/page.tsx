@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { brandAssets, pendingGroups } from "./brand-data";
+import { brandAssets } from "./brand-data";
 import { sitePath } from "./site-path";
 
 const navigation = [
@@ -349,8 +349,9 @@ export default function Home() {
               <p className="eyebrow">Direção fotográfica</p>
               <h3>Paisagem, escala,<br />luz e silêncio.</h3>
             </div>
-            <div className="photo-placeholder">
-              <span>Fotografias oficiais ainda não disponíveis</span>
+            <div className="photo-example">
+              <img src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="Pessoa contemplando uma paisagem de montanhas entre nuvens" />
+              <span>Imagem conceitual de simulação</span>
               <p>
                 As imagens devem valorizar a dimensão da paisagem e a experiência de estar nela. A presença humana pode
                 aparecer de forma discreta, reforçando a relação entre o viajante, o caminho e o ambiente.
@@ -367,18 +368,20 @@ export default function Home() {
           </div>
           <div className="format-grid">
             <article className="youtube-frame">
+              <img className="format-photo" src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="" />
               <div className="frame-top"><span>YouTube</span><span>2560 × 1440</span></div>
               <div className="safe-area">
                 <img src={sitePath("/assets/brand/logos/branca completa.svg")} alt="Simulação da área segura do banner com o logo oficial" />
-                <span>Área segura · layout final pendente</span>
+                <span>Área segura · simulação conceitual</span>
               </div>
             </article>
             <article className="vertical-frame">
               <div className="vertical-safe">
-                <img src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="Símbolo branco em simulação de formato vertical" />
-                <span>1080 × 1920</span>
+                <img className="format-photo" src={sitePath("/assets/mockups/horizonte-vivo-vertical.png")} alt="" />
+                <img className="vertical-brand" src={sitePath("/assets/brand/logos/simplificada branca.svg")} alt="Logo branco em simulação de formato vertical" />
+                <span>1080 × 1920 · simulação</span>
               </div>
-              <p>Stories · Reels · Shorts<br /><small>Templates oficiais em preparação</small></p>
+              <p>Stories · Reels · Shorts<br /><small>Direção visual conceitual</small></p>
             </article>
           </div>
           <div className="watermark-section">
@@ -396,8 +399,10 @@ export default function Home() {
               />
             </div>
             <div className="watermark-stage">
+              <img className="watermark-photo" src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="" />
               <span>Prévia horizontal · posicionamento não definitivo</span>
               <img
+                className="watermark-brand"
                 src={sitePath("/assets/brand/symbols/simbolo branco.svg")}
                 alt="Símbolo branco usado como prévia de marca d'água"
                 style={{ opacity: watermarkOpacity / 100 }}
@@ -414,20 +419,36 @@ export default function Home() {
         <section className="section mockups-section" id="mockups">
           <div className="section-index">08 / Mockups</div>
           <div className="section-heading">
-            <h2>Aplicações reais,<br />quando estiverem prontas.</h2>
-            <p>Nenhum mockup fictício foi criado. Os espaços abaixo documentam os materiais previstos no projeto.</p>
+            <h2>O horizonte<br />como linguagem.</h2>
+            <p>Primeiras simulações visuais para validar atmosfera, escala, contraste e presença da marca.</p>
           </div>
           <div className="mockup-grid">
-            {pendingGroups.map((item, index) => (
-              <article className={`mockup-placeholder mockup-${index + 1}`} key={item.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <em>Arquivo ainda não disponível</em>
-                </div>
-              </article>
-            ))}
+            <article className="mockup-card mockup-1 mockup-youtube">
+              <img src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="Simulação de banner do YouTube com montanhas" />
+              <img className="mockup-logo" src={sitePath("/assets/brand/logos/branca completa.svg")} alt="" />
+              <span>01 · YouTube</span>
+            </article>
+            <article className="mockup-card mockup-2 mockup-vertical">
+              <img src={sitePath("/assets/mockups/horizonte-vivo-vertical.png")} alt="Simulação vertical para Reels e Stories" />
+              <img className="mockup-logo" src={sitePath("/assets/brand/logos/simplificada branca.svg")} alt="" />
+              <span>02 · Reels / Stories</span>
+            </article>
+            <article className="mockup-card mockup-3 mockup-video">
+              <img src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="Simulação de identificação sobre vídeo" />
+              <div className="lower-third">
+                <img src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="" />
+                <div><strong>Viver é o caminho</strong><span>Enquanto Vivo</span></div>
+              </div>
+              <span>03 · Lower third</span>
+            </article>
+            <article className="mockup-placeholder mockup-4">
+              <span>04</span>
+              <div>
+                <h3>Camisetas</h3>
+                <p>Aplicações em peças pretas e brancas.</p>
+                <em>Próxima simulação</em>
+              </div>
+            </article>
           </div>
         </section>
 
