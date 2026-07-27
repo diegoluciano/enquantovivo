@@ -222,20 +222,22 @@ img {
 }
 
 .hero-photo {
-  filter: grayscale(52%) saturate(58%) contrast(1.08) brightness(0.72);
+  filter: grayscale(58%) saturate(48%) contrast(1.1) brightness(0.64);
   height: 100%;
   inset: 0;
   object-fit: cover;
   object-position: 44% center;
   position: absolute;
-  transform: scale(1.015);
+  transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.16);
+  transition: transform 80ms linear;
+  will-change: transform;
   width: 100%;
 }
 
 .hero-art::before {
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.06) 35%, rgba(0,0,0,0.5) 100%),
-    radial-gradient(circle at 50% 46%, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.42) 100%);
+    linear-gradient(180deg, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.22) 35%, rgba(0,0,0,0.68) 100%),
+    radial-gradient(circle at 50% 46%, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0.56) 100%);
   content: "";
   inset: 0;
   position: absolute;

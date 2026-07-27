@@ -62,9 +62,20 @@ export default function Home() {
   const [watermarkOpacity, setWatermarkOpacity] = useState(42);
   const [animationRun, setAnimationRun] = useState(0);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const heroArtRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let parallaxFrame = 0;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      if (prefersReducedMotion) return;
+      cancelAnimationFrame(parallaxFrame);
+      parallaxFrame = requestAnimationFrame(() => {
+        const parallaxOffset = Math.min(window.scrollY * 0.12, 86);
+        heroArtRef.current?.style.setProperty("--hero-parallax", `${parallaxOffset}px`);
+      });
+    };
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -82,6 +93,7 @@ export default function Home() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => {
+      cancelAnimationFrame(parallaxFrame);
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
@@ -165,7 +177,11 @@ export default function Home() {
               <a className="button button-light" href="#downloads">Baixar arquivos</a>
             </div>
           </div>
-          <div className="hero-art" aria-label="Fotografia de viajante saltando entre formações rochosas nas montanhas">
+          <div
+            className="hero-art"
+            ref={heroArtRef}
+            aria-label="Fotografia de viajante saltando entre formações rochosas nas montanhas"
+          >
             <img
               className="hero-photo"
               src={sitePath("/assets/photography/salto-na-montanha.jpg")}
