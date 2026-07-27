@@ -469,7 +469,7 @@ export default function Home() {
               <p className="eyebrow">Logo animado</p>
               <h3>O horizonte revela<br />o caminho.</h3>
               <p className="animation-note">
-                Conceito de movimento em três tempos: horizonte, símbolo e assinatura.
+                Conceito rápido em três tempos: formas, letras em arco e assinatura.
               </p>
               <button className="button button-dark" type="button" onClick={() => setAnimationRun((value) => value + 1)}>
                 Reproduzir novamente
