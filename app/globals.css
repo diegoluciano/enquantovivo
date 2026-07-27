@@ -1164,7 +1164,7 @@ img {
 }
 
 .animated-logo-stage {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 221 / 184;
   align-items: center;
   background: #303030;
   color: white;
@@ -1177,7 +1177,7 @@ img {
 .animated-logo-stage video {
   background: #303030;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
 }
 

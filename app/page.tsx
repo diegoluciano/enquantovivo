@@ -486,7 +486,6 @@ export default function Home() {
                 src={sitePath("/assets/video/logo-animado-oficial.mp4")}
                 aria-label="Animação oficial do logo Enquanto Vivo"
                 autoPlay
-                controls
                 loop
                 muted
                 playsInline
