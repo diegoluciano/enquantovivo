@@ -53,6 +53,7 @@ export default function Home() {
   const [lightboxAsset, setLightboxAsset] = useState<(typeof brandAssets)[number] | null>(null);
   const [copied, setCopied] = useState("");
   const [watermarkOpacity, setWatermarkOpacity] = useState(42);
+  const [animationRun, setAnimationRun] = useState(0);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -407,6 +408,74 @@ export default function Home() {
               <p>Stories · Reels · Shorts<br /><small>Direção visual conceitual</small></p>
             </article>
           </div>
+          <div className="youtube-channel-section">
+            <div className="youtube-channel-heading">
+              <div>
+                <p className="eyebrow">Simulação do canal</p>
+                <h3>Uma paisagem<br />para receber histórias.</h3>
+              </div>
+              <a
+                className="button button-dark"
+                href={sitePath("/assets/mockups/enquanto-vivo-youtube-banner-2560x1440.png")}
+                download
+              >
+                Baixar banner 2560 × 1440
+              </a>
+            </div>
+            <div className="youtube-channel">
+              <img
+                className="youtube-channel-banner"
+                src={sitePath("/assets/mockups/enquanto-vivo-youtube-banner-2560x1440.png")}
+                alt="Banner conceitual do canal Enquanto Vivo"
+              />
+              <div className="youtube-channel-profile">
+                <img src={sitePath("/assets/brand/logos/avatar preto.svg")} alt="Avatar do canal Enquanto Vivo" />
+                <div>
+                  <h4>Enquanto Vivo</h4>
+                  <p>@canalenquantovivo · Viagens, caminhos e histórias.</p>
+                </div>
+                <span>Inscrever-se</span>
+              </div>
+              <nav className="youtube-channel-nav" aria-label="Simulação das abas do canal">
+                <span className="is-active">Início</span>
+                <span>Vídeos</span>
+                <span>Shorts</span>
+                <span>Playlists</span>
+                <span>Comunidade</span>
+              </nav>
+              <div className="youtube-video-grid">
+                {["O caminho até o horizonte", "Silêncio acima das nuvens", "A montanha nos chama"].map((title, index) => (
+                  <article key={title}>
+                    <div>
+                      <img src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="" />
+                      <span>0{index + 1}</span>
+                    </div>
+                    <h5>{title}</h5>
+                    <p>Enquanto Vivo · Simulação visual</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="animated-logo-section">
+            <div>
+              <p className="eyebrow">Logo animado</p>
+              <h3>O horizonte revela<br />o caminho.</h3>
+              <p className="animation-note">
+                Conceito de movimento em três tempos: horizonte, símbolo e assinatura.
+              </p>
+              <button className="button button-dark" type="button" onClick={() => setAnimationRun((value) => value + 1)}>
+                Reproduzir novamente
+              </button>
+            </div>
+            <div className="animated-logo-stage" key={animationRun}>
+              <img className="animation-photo" src={sitePath("/assets/mockups/horizonte-vivo-horizontal.png")} alt="" />
+              <span className="animation-horizon" aria-hidden="true" />
+              <img className="animation-symbol" src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="" />
+              <img className="animation-lockup" src={sitePath("/assets/brand/logos/branca completa.svg")} alt="Logo animado conceitual Enquanto Vivo" />
+              <span className="animation-caption">Conceito de movimento · 6 segundos</span>
+            </div>
+          </div>
           <div className="watermark-section">
             <div>
               <p className="eyebrow">Simulação de watermark</p>
@@ -433,7 +502,7 @@ export default function Home() {
             </div>
           </div>
           <div className="pending-strip">
-            {["Vinheta", "Logo animado", "Legendas", "Abertura", "Encerramento"].map((item) => (
+            {["Vinheta", "Legendas", "Abertura", "Encerramento"].map((item) => (
               <div key={item}><span>{item}</span><em>Em preparação</em></div>
             ))}
           </div>
