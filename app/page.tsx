@@ -29,13 +29,6 @@ const wrongUses = [
   ["Reduzir contraste", "wrong-fade"],
 ];
 
-const logoArcLetters = [
-  ...[..."ENQUANTO"].map((letter, index) => ({ letter, angle: -110 + index * 25 })),
-  ...[..."VIVO"].map((letter, index) => ({ letter, angle: 72 + index * 24 })),
-];
-
-const logoTagline = [..."VIVER É O CAMINHO"];
-
 function AssetPreview({
   asset,
   compact = false,
@@ -60,8 +53,8 @@ export default function Home() {
   const [lightboxAsset, setLightboxAsset] = useState<(typeof brandAssets)[number] | null>(null);
   const [copied, setCopied] = useState("");
   const [watermarkOpacity, setWatermarkOpacity] = useState(42);
-  const [animationRun, setAnimationRun] = useState(0);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const animatedLogoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -473,38 +466,33 @@ export default function Home() {
               <p className="eyebrow">Logo animado</p>
               <h3>O horizonte revela<br />o caminho.</h3>
               <p className="animation-note">
-                Conceito rápido em três tempos: formas, letras em arco e assinatura.
+                Animação oficial da marca para aberturas, encerramentos e assinaturas em vídeo.
               </p>
-              <button className="button button-dark" type="button" onClick={() => setAnimationRun((value) => value + 1)}>
+              <button
+                className="button button-dark"
+                type="button"
+                onClick={() => {
+                  if (!animatedLogoRef.current) return;
+                  animatedLogoRef.current.currentTime = 0;
+                  void animatedLogoRef.current.play();
+                }}
+              >
                 Reproduzir novamente
               </button>
             </div>
-            <div className="animated-logo-stage" key={animationRun}>
-              <div className="animation-mark" aria-label="Logo animado conceitual Enquanto Vivo">
-                <img className="animation-symbol animation-symbol-base" src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="" />
-                <img className="animation-symbol animation-symbol-top" src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="" />
-                <div className="animation-arc" aria-hidden="true">
-                  {logoArcLetters.map(({ letter, angle }, index) => (
-                    <span
-                      key={`${letter}-${index}`}
-                      style={{
-                        animationDelay: `${0.62 + index * 0.055}s`,
-                        transform: `rotate(${angle}deg)`,
-                      }}
-                    >
-                      {letter}
-                    </span>
-                  ))}
-                </div>
-                <div className="animation-tagline" aria-hidden="true">
-                  {logoTagline.map((letter, index) => (
-                    <span key={`${letter}-${index}`} style={{ animationDelay: `${1.34 + index * 0.035}s` }}>
-                      {letter === " " ? "\u00A0" : letter}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <span className="animation-caption">Fade · ease · zoom · 2 segundos</span>
+            <div className="animated-logo-stage">
+              <video
+                ref={animatedLogoRef}
+                src={sitePath("/assets/video/logo-animado-oficial.mp4")}
+                aria-label="Animação oficial do logo Enquanto Vivo"
+                autoPlay
+                controls
+                loop
+                muted
+                playsInline
+                preload="metadata"
+              />
+              <span className="animation-caption">Animação oficial · MP4</span>
             </div>
           </div>
           <div className="watermark-section">

@@ -1174,70 +1174,11 @@ img {
   position: relative;
 }
 
-.animation-mark {
-  aspect-ratio: 1;
-  position: relative;
-  width: min(54%, 430px);
-}
-
-.animation-symbol {
-  left: 50%;
+.animated-logo-stage video {
+  background: #303030;
+  height: 100%;
   object-fit: contain;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 57%;
-}
-
-.animation-symbol-base {
-  animation: form-fade-zoom .42s cubic-bezier(.22, 1, .36, 1) .06s forwards;
-  clip-path: inset(18% 0 0);
-}
-
-.animation-symbol-top {
-  animation: form-fade-zoom .42s cubic-bezier(.22, 1, .36, 1) .3s forwards;
-  clip-path: inset(0 0 52% 0);
-}
-
-.animation-arc {
-  inset: 0;
-  position: absolute;
-}
-
-.animation-arc span {
-  bottom: 50%;
-  font-family: var(--font-brand-sans);
-  font-size: clamp(15px, 1.65vw, 27px);
-  font-weight: 400;
-  height: 47%;
-  left: calc(50% - .45em);
-  opacity: 0;
-  position: absolute;
-  scale: .9;
-  text-align: center;
-  transform-origin: 50% 100%;
-  width: .9em;
-  animation: letter-fade-zoom .28s cubic-bezier(.22, 1, .36, 1) forwards;
-}
-
-.animation-tagline {
-  bottom: 7%;
-  display: flex;
-  font-family: var(--font-brand-sans);
-  font-size: clamp(7px, .72vw, 11px);
-  justify-content: center;
-  left: 0;
-  letter-spacing: .14em;
-  position: absolute;
-  right: 0;
-  text-transform: uppercase;
-}
-
-.animation-tagline span {
-  opacity: 0;
-  scale: .9;
-  animation: letter-fade-zoom .24s cubic-bezier(.22, 1, .36, 1) forwards;
+  width: 100%;
 }
 
 .animation-caption {
@@ -1249,16 +1190,6 @@ img {
   position: absolute;
   text-transform: uppercase;
   z-index: 3;
-}
-
-@keyframes form-fade-zoom {
-  from { opacity: 0; scale: .94; }
-  to { opacity: 1; scale: 1; }
-}
-
-@keyframes letter-fade-zoom {
-  from { opacity: 0; scale: .88; }
-  to { opacity: 1; scale: 1; }
 }
 
 .watermark-section {
@@ -1728,7 +1659,6 @@ footer a {
   .youtube-channel-profile > span { grid-column: 1 / -1; }
   .youtube-channel-nav { padding: 0 20px; }
   .youtube-video-grid { grid-template-columns: 1fr; padding: 24px 20px 30px; }
-  .animation-mark { width: 76%; }
   .photo-example { min-height: 420px; }
   .photo-example p { font-size: 18px; }
   .technical-specs article {
@@ -1753,12 +1683,5 @@ footer a {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-  }
-  .animation-symbol,
-  .animation-arc span,
-  .animation-tagline span {
-    animation: none;
-    opacity: 1;
-    scale: 1;
   }
 }
