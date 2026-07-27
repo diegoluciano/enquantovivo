@@ -15,6 +15,17 @@ const navigation = [
   ["downloads", "Downloads"],
 ] as const;
 
+const downloadableAssets = [
+  ...brandAssets,
+  {
+    id: "logo-animado-svg",
+    name: "Logo animado oficial",
+    kind: "Animação vetorial",
+    format: "SVG",
+    path: "/assets/video/logo-animado-oficial.svg",
+  },
+] as const;
+
 const essence = [
   ["01", "Presença", "Estar verdadeiramente presente no lugar, no momento e na experiência."],
   ["02", "Caminho", "Valorizar o percurso e tudo aquilo que acontece antes da chegada."],
@@ -567,10 +578,10 @@ export default function Home() {
           <div className="section-index">09 / Downloads</div>
           <div className="downloads-heading">
             <h2>Arquivos oficiais,<br />prontos para uso.</h2>
-            <p>8 arquivos SVG disponíveis. Outros formatos permanecem sinalizados como pendentes.</p>
+            <p>9 arquivos SVG disponíveis. Outros formatos permanecem sinalizados como pendentes.</p>
           </div>
           <div className="download-table">
-            {brandAssets.map((asset) => (
+            {downloadableAssets.map((asset) => (
               <a href={sitePath(asset.path)} download key={asset.id} className="download-row">
                 <span>{asset.name}</span>
                 <span>{asset.kind}</span>

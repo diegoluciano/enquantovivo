@@ -1166,7 +1166,7 @@ img {
 .animated-logo-stage {
   aspect-ratio: 221 / 184;
   align-items: center;
-  background: #303030;
+  background: #000;
   color: white;
   display: flex;
   justify-content: center;
@@ -1175,10 +1175,10 @@ img {
 }
 
 .animated-logo-stage video {
-  background: #303030;
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
+  background: #000;
+  height: 50%;
+  object-fit: contain;
+  width: 50%;
 }
 
 .animation-caption {
@@ -1308,8 +1308,8 @@ img {
   opacity: .84;
   position: absolute;
   right: 29%;
-  top: 20.5%;
-  width: 12.2%;
+  top: 18%;
+  width: 13.6%;
   z-index: 3;
 }
 
