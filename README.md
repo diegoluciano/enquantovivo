@@ -15,6 +15,14 @@ Para gerar a versão de produção:
 npm run build
 ```
 
+Para gerar a versão estática usada pelo GitHub Pages:
+
+```bash
+npm run build:pages
+```
+
+O workflow `.github/workflows/deploy-pages.yml` publica automaticamente o site no GitHub Pages após cada envio para a branch `main`.
+
 ## Organização dos materiais
 
 - Logos e avatares: `public/assets/brand/logos/`

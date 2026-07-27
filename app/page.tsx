@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { brandAssets, pendingGroups } from "./brand-data";
+import { sitePath } from "./site-path";
 
 const navigation = [
   ["visao-geral", "Visão geral"],
@@ -37,7 +38,7 @@ function AssetPreview({
 }) {
   return (
     <img
-      src={asset.path}
+      src={sitePath(asset.path)}
       alt={`Versão oficial ${asset.name} da marca Enquanto Vivo`}
       className={compact ? "asset-image compact" : "asset-image"}
       loading="lazy"
@@ -118,7 +119,7 @@ export default function Home() {
     <>
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="header-mark" href="#topo" aria-label="Enquanto Vivo — voltar ao início">
-          <img src="/assets/brand/symbols/cimbolo preto.svg" alt="" />
+          <img src={sitePath("/assets/brand/symbols/cimbolo preto.svg")} alt="" />
           <span>Enquanto Vivo</span>
         </a>
         <nav id="mobile-navigation" className={`main-nav ${menuOpen ? "is-open" : ""}`} aria-label="Navegação principal">
@@ -159,7 +160,7 @@ export default function Home() {
           </div>
           <div className="hero-art" aria-label="Área reservada para fotografia oficial de abertura">
             <div className="hero-logo-stage">
-              <img src="/assets/brand/logos/branca completa.svg" alt="Logo completo branco do Enquanto Vivo" />
+              <img src={sitePath("/assets/brand/logos/branca completa.svg")} alt="Logo completo branco do Enquanto Vivo" />
             </div>
             <div className="hero-art-meta">
               <span>Fotografia oficial</span>
@@ -227,7 +228,7 @@ export default function Home() {
                     <h3>{asset.name}</h3>
                     <p>{asset.kind} · {asset.format}</p>
                   </div>
-                  <a href={asset.path} download>Baixar</a>
+                  <a href={sitePath(asset.path)} download>Baixar</a>
                 </div>
               </article>
             ))}
@@ -248,7 +249,7 @@ export default function Home() {
                 Esta seção está preparada para receber a prancha técnica oficial, sem deduções automáticas.
               </p>
               <div className="protection-placeholder" aria-hidden="true">
-                <div><img src="/assets/brand/symbols/cimbolo preto.svg" alt="" /></div>
+                <div><img src={sitePath("/assets/brand/symbols/cimbolo preto.svg")} alt="" /></div>
               </div>
             </div>
           </div>
@@ -262,7 +263,7 @@ export default function Home() {
               {wrongUses.map(([label, className]) => (
                 <article key={label}>
                   <div className="wrong-preview">
-                    <img className={className} src="/assets/brand/symbols/cimbolo preto.svg" alt="" />
+                    <img className={className} src={sitePath("/assets/brand/symbols/cimbolo preto.svg")} alt="" />
                     <span aria-hidden="true">×</span>
                   </div>
                   <p>{label}</p>
@@ -336,11 +337,11 @@ export default function Home() {
           </div>
           <div className="background-applications">
             <article className="application-light">
-              <img src="/assets/brand/logos/preta completa.svg" alt="Logo preto aplicado sobre fundo claro" />
+              <img src={sitePath("/assets/brand/logos/preta completa.svg")} alt="Logo preto aplicado sobre fundo claro" />
               <div><span>Fundo claro</span><span>Versão positiva</span></div>
             </article>
             <article className="application-dark">
-              <img src="/assets/brand/logos/branca completa.svg" alt="Logo branco aplicado sobre fundo escuro" />
+              <img src={sitePath("/assets/brand/logos/branca completa.svg")} alt="Logo branco aplicado sobre fundo escuro" />
               <div><span>Fundo escuro</span><span>Versão negativa</span></div>
             </article>
           </div>
@@ -369,13 +370,13 @@ export default function Home() {
             <article className="youtube-frame">
               <div className="frame-top"><span>YouTube</span><span>2560 × 1440</span></div>
               <div className="safe-area">
-                <img src="/assets/brand/logos/branca completa.svg" alt="Simulação da área segura do banner com o logo oficial" />
+                <img src={sitePath("/assets/brand/logos/branca completa.svg")} alt="Simulação da área segura do banner com o logo oficial" />
                 <span>Área segura · layout final pendente</span>
               </div>
             </article>
             <article className="vertical-frame">
               <div className="vertical-safe">
-                <img src="/assets/brand/symbols/simbolo branco.svg" alt="Símbolo branco em simulação de formato vertical" />
+                <img src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="Símbolo branco em simulação de formato vertical" />
                 <span>1080 × 1920</span>
               </div>
               <p>Stories · Reels · Shorts<br /><small>Templates oficiais em preparação</small></p>
@@ -398,7 +399,7 @@ export default function Home() {
             <div className="watermark-stage">
               <span>Prévia horizontal · posicionamento não definitivo</span>
               <img
-                src="/assets/brand/symbols/simbolo branco.svg"
+                src={sitePath("/assets/brand/symbols/simbolo branco.svg")}
                 alt="Símbolo branco usado como prévia de marca d'água"
                 style={{ opacity: watermarkOpacity / 100 }}
               />
@@ -439,7 +440,7 @@ export default function Home() {
           </div>
           <div className="download-table">
             {brandAssets.map((asset) => (
-              <a href={asset.path} download key={asset.id} className="download-row">
+              <a href={sitePath(asset.path)} download key={asset.id} className="download-row">
                 <span>{asset.name}</span>
                 <span>{asset.kind}</span>
                 <span>{asset.format}</span>
@@ -457,7 +458,7 @@ export default function Home() {
 
       <footer>
         <div>
-          <img src="/assets/brand/symbols/simbolo branco.svg" alt="" />
+          <img src={sitePath("/assets/brand/symbols/simbolo branco.svg")} alt="" />
           <span>Enquanto Vivo · Central de Marca</span>
         </div>
         <a href="#topo">Voltar ao topo ↑</a>
@@ -477,7 +478,7 @@ export default function Home() {
             <AssetPreview asset={lightboxAsset} />
             <div>
               <span>{lightboxAsset.name} · {lightboxAsset.format}</span>
-              <a href={lightboxAsset.path} download>Baixar arquivo ↓</a>
+              <a href={sitePath(lightboxAsset.path)} download>Baixar arquivo ↓</a>
             </div>
           </div>
         </div>
