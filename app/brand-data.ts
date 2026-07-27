@@ -1,0 +1,73 @@
+export const brandAssets = [
+  {
+    id: "logo-completo-branco",
+    name: "Assinatura completa branca",
+    kind: "Logo completo",
+    format: "SVG",
+    path: "/assets/brand/logos/branca completa.svg",
+    theme: "theme-dark",
+  },
+  {
+    id: "logo-completo-preto",
+    name: "Assinatura completa preta",
+    kind: "Logo completo",
+    format: "SVG",
+    path: "/assets/brand/logos/preta completa.svg",
+    theme: "theme-light",
+  },
+  {
+    id: "logo-simplificado-branco",
+    name: "Assinatura simplificada branca",
+    kind: "Logo simplificado",
+    format: "SVG",
+    path: "/assets/brand/logos/simplificada branca.svg",
+    theme: "theme-dark",
+  },
+  {
+    id: "logo-simplificado-preto",
+    name: "Assinatura simplificada preta",
+    kind: "Logo simplificado",
+    format: "SVG",
+    path: "/assets/brand/logos/simplificada preta.svg",
+    theme: "theme-light",
+  },
+  {
+    id: "simbolo-branco",
+    name: "Símbolo branco",
+    kind: "Símbolo isolado",
+    format: "SVG",
+    path: "/assets/brand/symbols/simbolo branco.svg",
+    theme: "theme-dark",
+  },
+  {
+    id: "simbolo-preto",
+    name: "Símbolo preto",
+    kind: "Símbolo isolado",
+    format: "SVG",
+    path: "/assets/brand/symbols/cimbolo preto.svg",
+    theme: "theme-light",
+  },
+  {
+    id: "avatar-branco",
+    name: "Avatar branco",
+    kind: "Avatar",
+    format: "SVG",
+    path: "/assets/brand/logos/avatar branco.svg",
+    theme: "theme-dark",
+  },
+  {
+    id: "avatar-preto",
+    name: "Avatar preto",
+    kind: "Avatar",
+    format: "SVG",
+    path: "/assets/brand/logos/avatar preto.svg",
+    theme: "theme-light",
+  },
+] as const;
+
+export const pendingGroups = [
+  { title: "YouTube", description: "Banner, thumbnail, abertura e encerramento." },
+  { title: "Camisetas", description: "Cinco mockups previstos para aplicações oficiais." },
+  { title: "Instagram", description: "Stories, Reels, cards e divulgação de episódios." },
+  { title: "Vídeo", description: "Watermark, legendas, vinheta e logo animado." },
+] as const;
