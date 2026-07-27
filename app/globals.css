@@ -1350,6 +1350,20 @@ img {
   z-index: 2;
 }
 
+.mockup-shirt .shirt-logo {
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  right: 20%;
+  top: 22%;
+  width: 13%;
+  z-index: 3;
+}
+
+.mockup-shirt::after {
+  background: linear-gradient(180deg, transparent 62%, rgba(8, 8, 8, .62));
+}
+
 .mockup-vertical .mockup-logo {
   top: 26%;
   width: 48%;
@@ -1414,7 +1428,8 @@ img {
 .mockup-1 { grid-column: span 7; grid-row: span 2; }
 .mockup-2 { grid-column: span 5; grid-row: span 3; background: #151515; color: white; }
 .mockup-3 { grid-column: span 4; grid-row: span 2; background: var(--color-white); }
-.mockup-4 { grid-column: span 3; grid-row: span 2; background: #d6d3cc; }
+.mockup-4,
+.mockup-5 { grid-column: span 4; grid-row: span 2; }
 
 .downloads-heading {
   margin-bottom: 100px;

@@ -560,13 +560,15 @@ export default function Home() {
               </div>
               <span>03 · Lower third</span>
             </article>
-            <article className="mockup-placeholder mockup-4">
-              <span>04</span>
-              <div>
-                <h3>Camisetas</h3>
-                <p>Aplicações em peças pretas e brancas.</p>
-                <em>Próxima simulação</em>
-              </div>
+            <article className="mockup-card mockup-4 mockup-shirt mockup-shirt-black">
+              <img src={sitePath("/assets/mockups/camiseta-preta-frente.png")} alt="Camiseta preta vista de frente com aplicação branca no peito esquerdo" />
+              <img className="shirt-logo" src={sitePath("/assets/brand/logos/simplificada branca.svg")} alt="" />
+              <span>04 · Camiseta preta · Frente</span>
+            </article>
+            <article className="mockup-card mockup-5 mockup-shirt mockup-shirt-white">
+              <img src={sitePath("/assets/mockups/camiseta-branca-frente.png")} alt="Camiseta branca vista de frente com aplicação preta no peito esquerdo" />
+              <img className="shirt-logo" src={sitePath("/assets/brand/logos/simplificada preta.svg")} alt="" />
+              <span>05 · Camiseta branca · Frente</span>
             </article>
           </div>
         </section>
