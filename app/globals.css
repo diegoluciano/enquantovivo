@@ -1308,9 +1308,9 @@ img {
 
 .mockup-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 240px;
   gap: 12px;
+  grid-auto-rows: 94px;
+  grid-template-columns: repeat(12, 1fr);
 }
 
 .mockup-placeholder {
@@ -1353,11 +1353,23 @@ img {
 .mockup-shirt .shirt-logo {
   height: auto;
   object-fit: contain;
+  opacity: .84;
   position: absolute;
-  right: 20%;
-  top: 22%;
-  width: 13%;
+  right: 29%;
+  top: 22.5%;
+  width: 11%;
   z-index: 3;
+}
+
+.mockup-shirt-black .shirt-logo {
+  filter: blur(.15px);
+  mix-blend-mode: screen;
+}
+
+.mockup-shirt-white .shirt-logo {
+  filter: blur(.12px);
+  mix-blend-mode: multiply;
+  opacity: .72;
 }
 
 .mockup-shirt::after {
@@ -1425,11 +1437,20 @@ img {
   color: var(--color-medium-gray);
 }
 
-.mockup-1 { grid-column: span 7; grid-row: span 2; }
-.mockup-2 { grid-column: span 5; grid-row: span 3; background: #151515; color: white; }
-.mockup-3 { grid-column: span 4; grid-row: span 2; background: var(--color-white); }
-.mockup-4,
-.mockup-5 { grid-column: span 4; grid-row: span 2; }
+.mockup-1 { grid-column: 1 / span 7; grid-row: 1 / span 4; }
+.mockup-2 {
+  background: #151515;
+  color: white;
+  grid-column: 8 / span 5;
+  grid-row: 1 / span 7;
+}
+.mockup-3 {
+  background: var(--color-white);
+  grid-column: 1 / span 7;
+  grid-row: 5 / span 3;
+}
+.mockup-4 { grid-column: 1 / span 6; grid-row: 8 / span 6; }
+.mockup-5 { grid-column: 7 / span 6; grid-row: 8 / span 6; }
 
 .downloads-heading {
   margin-bottom: 100px;
