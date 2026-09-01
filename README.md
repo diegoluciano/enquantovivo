@@ -1,0 +1,74 @@
+# Enquanto Vivo — Central de Marca · Conceito 3
+
+Site estático de página única (mesmo formato da referência
+`diegoluciano.github.io/enquantovivo`), com a identidade adequada ao **Conceito 3**
+(selo circular · verde profundo `#0D160E` · verde-sálvia `#D8DDB8` · branco).
+
+## Rodar localmente
+
+```bash
+cd "Conceito 3/site"
+python3 -m http.server 4188
+# abrir http://localhost:4188
+```
+
+Também funciona abrindo `index.html` direto, mas via servidor as fontes e o
+GSAP carregam de forma mais previsível. Deploy: subir a pasta inteira em
+qualquer host estático (GitHub Pages, Netlify…).
+
+## Estrutura
+
+```
+site/
+├── index.html            página única, 9 seções + hero
+├── assets/
+│   ├── css/style.css      paleta em CSS custom props no :root
+│   ├── js/
+│   │   ├── main.js        interações + timelines GSAP
+│   │   └── vendor/        gsap 3.13 + ScrollTrigger + DrawSVGPlugin (locais)
+│   ├── svg/               logo / símbolo / avatar — cada um em 3 cores
+│   ├── fonts/             Google Sans (.woff2) — ver LEIA-ME.txt; fallback de sistema sem os arquivos
+│   └── img/               imagens conceituais (IA: Higgsfield/Recraft) + channel-cover.jpg (foto real do canal, Roraima)
+├── downloads/             SVGs servidos nos botões "Baixar"
+└── svg/                   pasta original entregue (intocada)
+```
+
+## GSAP — o que está animado
+
+| Alvo | Efeito |
+|---|---|
+| Hero | frame + anel desenhados (DrawSVG), selo entra com rotação/escala, textos em stagger |
+| Selo | leve deslocamento vertical no scroll (sem rotação — marca circular) |
+| Foto do hero | parallax vertical no scroll |
+| Seções | `[data-reveal-child]` sobem com fade em stagger ao entrar na viewport |
+| Fotos (direção / mockups) | parallax leve |
+| `prefers-reduced-motion` | tudo desligado, conteúdo visível |
+
+### Hooks para os SVGs decompostos (quando você entregar)
+
+`main.js` já isola a intro do hero. Quando chegarem os vetores separados
+(anel de texto, montanha, sol, ondas), basta trocar o `<img class="badge-spin">`
+do `index.html` por um `<svg>` inline com esses grupos marcados
+`data-anim="ring|mountain|sun|waves"` e adicionar as tweens no bloco
+"HERO intro" — a estrutura de layout não muda.
+
+## Pendências (sinalizadas como "Em preparação" no site)
+
+- Assinatura simplificada — entregues até agora: selo completo + símbolo isolado (3 cores cada: branco / sálvia / escuro) + avatar de perfil circular (`avatar1` sálvia, `avatar2` escuro)
+- Prancha oficial de construção/proporções (os valores atuais são referência)
+- **Google Sans** é a tipografia oficial da marca (títulos + texto). Arquivos `.woff2`
+  em `assets/fonts/` — enquanto não estiverem lá, cai no fallback de sistema. Conferir
+  direitos de uso/embed da Google Sans antes de publicar.
+- **Nexa Rust Sans** — citada nos vetores do logotipo; uso restrito ao logo, arquivo/licença ainda não fornecidos
+- Logo animado, vinheta, legendas, PNG/PDF/EPS, templates sociais, pacote de vídeo
+- Imagens em `assets/img/` são **simulações geradas por IA** para direção visual —
+  substituir pelo acervo real do Fábio Henrique (ou refinar via Magnific/Higgsfield).
+
+## Paleta
+
+| Nome | HEX | RGB |
+|---|---|---|
+| Verde profundo | `#0D160E` | 13 · 22 · 14 |
+| Verde-sálvia | `#D8DDB8` | 216 · 221 · 184 |
+| Branco | `#FFFFFF` | 255 · 255 · 255 |
+| Off-white interface (funcional, fora da paleta) | `#F4F3EB` | — |

@@ -1,0 +1,17 @@
+TIPOGRAFIA OFICIAL — GOOGLE SANS
+================================
+
+A Central de Marca usa "Google Sans" como fonte oficial (o CSS já
+referencia estes três arquivos via @font-face em assets/css/style.css):
+
+  GoogleSans-Regular.woff2   (peso 400)
+  GoogleSans-Medium.woff2    (peso 500)
+  GoogleSans-Bold.woff2      (peso 700)
+
+Coloque os .woff2 (ou .ttf convertidos) nesta pasta com exatamente
+esses nomes. Enquanto os arquivos não estiverem aqui, o site cai na
+pilha de fallback: Google Sans Text / Product Sans / fonte de sistema.
+
+Observação de licenciamento: a Google Sans é distribuída pela Google
+para uso em seus próprios produtos; confirme os direitos de uso/embed
+antes de publicar o site com a fonte embutida.
