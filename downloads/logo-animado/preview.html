@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Enquanto Vivo — logo animado</title>
+<style>
+  html,body{margin:0;height:100%;background:transparent}
+  body{display:grid;place-items:center}
+  /* fundo só na prévia standalone; ?bg=none deixa transparente p/ captura */
+  body.preview{background:#0D160E}
+  #wrap{width:min(70vmin,560px);aspect-ratio:1/1;display:grid;place-items:center}
+  #wrap>*{grid-area:1/1}
+  svg{overflow:visible;width:100%;height:100%}
+  #badge{width:78%;height:auto;transform-origin:50% 50%}
+  #ring{fill:none;stroke-width:2.2;stroke-linecap:round}
+</style>
+</head>
+<body>
+  <div id="wrap">
+    <svg id="ringSvg" viewBox="0 0 200 200" aria-hidden="true">
+      <circle id="ring" cx="100" cy="100" r="97"/>
+    </svg>
+    <img id="badge" alt="Enquanto Vivo">
+  </div>
+
+<script src="../assets/js/vendor/gsap.min.js"></script>
+<script src="../assets/js/vendor/DrawSVGPlugin.min.js"></script>
+<script>
+(function(){
+  var q = new URLSearchParams(location.search);
+  var variant = q.get("v") || "branco";           // branco | escuro | claro
+  var stroke  = { branco:"#FFFFFF", escuro:"#0D160E", claro:"#D8DDB8" }[variant] || "#FFFFFF";
+  document.getElementById("badge").src = "../assets/svg/logo-" + variant + ".svg";
+  document.getElementById("ring").setAttribute("stroke", stroke);
+  if (q.get("bg") !== "none") document.body.classList.add("preview");
+
+  gsap.registerPlugin(DrawSVGPlugin);
+
+  var tl = gsap.timeline({ paused:true, defaults:{ ease:"power3.out" } });
+  tl.set("#wrap", { clipPath:"circle(0% at 50% 50%)" })
+    .set("#badge", { opacity:0, scale:0.72 })
+    .set("#ring",  { drawSVG:"0%" })
+    .to("#wrap",  { clipPath:"circle(75% at 50% 50%)", duration:0.9, ease:"power2.out" }, 0.10)
+    .to("#badge", { opacity:1, scale:1, duration:1.0, ease:"back.out(1.5)" }, 0.18)
+    .to("#ring",  { drawSVG:"100%", duration:1.05, ease:"power2.inOut" }, 0.40)
+    .to("#badge", { scale:1.02, duration:0.5, ease:"sine.inOut" }, 1.25)
+    .to("#badge", { scale:1,    duration:0.6, ease:"sine.inOut" }, 1.75)
+    .to({}, { duration:0.9 });                       // hold
+
+  var TOTAL = tl.duration();
+  window.__TOTAL = TOTAL;
+
+  var seek = q.get("seek");
+  if (seek !== null) {
+    tl.progress(Math.max(0, Math.min(1, parseFloat(seek))));   // modo captura de frame
+  } else {
+    tl.repeat(-1).repeatDelay(0.7).play(0);                    // prévia em loop
+  }
+})();
+</script>
+</body>
+</html>

@@ -26,12 +26,25 @@ site/
 │   ├── js/
 │   │   ├── main.js        interações + timelines GSAP
 │   │   └── vendor/        gsap 3.13 + ScrollTrigger + DrawSVGPlugin (locais)
-│   ├── svg/               logo / símbolo / avatar — cada um em 3 cores
+│   ├── svg/               logo / símbolo / avatar / assinatura-simplificada — cada um em 3 cores
 │   ├── fonts/             Google Sans (.woff2) — ver LEIA-ME.txt; fallback de sistema sem os arquivos
 │   └── img/               imagens conceituais (IA: Higgsfield/Recraft) + channel-cover.jpg (foto real do canal, Roraima)
-├── downloads/             SVGs servidos nos botões "Baixar"
+├── downloads/             arquivos servidos nos botões "Baixar":
+│   ├── *.svg                       selo / símbolo / avatar / assinatura simplificada
+│   ├── enquantovivo-png.zip        PNG transparente @1x/@2x/@4x dos 8 SVGs
+│   ├── enquantovivo-pdf.zip        PDF vetorial dos 8 SVGs
+│   ├── logo-animado.html           animação GSAP do selo (loop) — abrir no navegador
+│   ├── logo-animado/               MP4 + WebM(alpha) + GIF, versões branca e escura
+│   └── enquantovivo-logo-animado.zip
+├── exports/               saída bruta do gerador de PNG/PDF (não precisa versionar)
 └── svg/                   pasta original entregue (intocada)
 ```
+
+### Gerar de novo os derivados (scratchpad, fora do repo)
+
+- **PNG + PDF:** `node export.mjs` (headless Chrome; lê `assets/svg/`, escreve `exports/` e os `.zip` em `downloads/`).
+- **Assinatura simplificada:** `node lockup.mjs` (opentype.js + Archivo Black → SVG com o logotipo em contornos). Fonte provisória até a Nexa Rust oficial.
+- **Logo animado:** `bash encode2.sh` (captura frames de `downloads/logo-animado.html` via Chrome, monta MP4/WebM/GIF com ffmpeg).
 
 ## GSAP — o que está animado
 
@@ -54,13 +67,15 @@ do `index.html` por um `<svg>` inline com esses grupos marcados
 
 ## Pendências (sinalizadas como "Em preparação" no site)
 
-- Assinatura simplificada — entregues até agora: selo completo + símbolo isolado (3 cores cada: branco / sálvia / escuro) + avatar de perfil circular (`avatar1` sálvia, `avatar2` escuro)
+- Entregue: selo completo, símbolo isolado, avatar de perfil circular e **assinatura
+  simplificada** (símbolo + logotipo) — 3 cores cada. + pacotes **PNG** e **PDF**. + **logo animado** (MP4/WebM/GIF).
+- Assinatura simplificada usa **logotipo em fonte provisória (Archivo Black)** — trocar pela Nexa Rust oficial e revalidar proporção/tracking.
 - Prancha oficial de construção/proporções (os valores atuais são referência)
 - **Google Sans** é a tipografia oficial da marca (títulos + texto). Arquivos `.woff2`
   em `assets/fonts/` — enquanto não estiverem lá, cai no fallback de sistema. Conferir
   direitos de uso/embed da Google Sans antes de publicar.
 - **Nexa Rust Sans** — citada nos vetores do logotipo; uso restrito ao logo, arquivo/licença ainda não fornecidos
-- Logo animado, vinheta, legendas, PNG/PDF/EPS, templates sociais, pacote de vídeo
+- Ainda pendente: **EPS** e **editáveis (.ai)** (precisam de Illustrator/Inkscape), vinheta/legendas/pacote de vídeo, templates sociais
 - Imagens em `assets/img/` são **simulações geradas por IA** para direção visual —
   substituir pelo acervo real do Fábio Henrique (ou refinar via Magnific/Higgsfield).
 

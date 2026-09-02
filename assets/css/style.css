@@ -169,6 +169,20 @@ h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.02em;line-height:1.02}
 .plate__dl:hover{opacity:.6}
 .plate__dl.is-off,.is-off em{color:var(--ink-45);border:0;font-style:normal;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
 
+/* assinatura simplificada (lockups) */
+.lockups{margin-top:clamp(2.5rem,6vw,4rem)}
+.lockups__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink-14);border:1px solid var(--ink-14);margin-top:1.6rem}
+.lk{margin:0;background:var(--paper);display:flex;flex-direction:column}
+.lk__stage{padding:clamp(1.6rem,3.5vw,2.6rem);display:grid;place-items:center}
+.lk__stage img{width:100%;max-width:340px;height:auto}
+.lk--light .lk__stage{background:var(--white)}
+.lk--dark .lk__stage{background:var(--ink)}
+.lk--sage .lk__stage{background:var(--sage)}
+.lk figcaption{border-top:1px solid var(--ink-14);padding:.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-45)}
+.lk figcaption a{font-weight:500;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px;transition:opacity .2s}
+.lk figcaption a:hover{opacity:.55}
+
 /* ---------- 03 construção ---------- */
 .tech__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
 .clearspace{background:var(--white);border:1px solid var(--ink-14);padding:clamp(2rem,5vw,3.5rem);display:grid;place-items:center}
@@ -280,6 +294,12 @@ h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.02em;line-height:1.02}
 .watermark__control input{accent-color:var(--ink);flex:1;max-width:280px}
 .watermark__control output{color:var(--ink);font-variant-numeric:tabular-nums}
 
+.logoanim{margin-top:clamp(3.5rem,8vw,6rem)}
+.logoanim__stage{margin-top:1.6rem;background:var(--ink);border:1px solid var(--ink-14);display:grid;place-items:center;padding:clamp(1.5rem,4vw,3rem)}
+.logoanim__stage video{width:min(360px,70%);height:auto;display:block}
+.logoanim .caption a{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:1px}
+.logoanim .caption a:hover{opacity:.6}
+
 .video__pending{margin-top:clamp(2.5rem,6vw,4rem);border-top:1px solid var(--ink-14);padding-top:1.4rem;display:flex;flex-wrap:wrap;gap:1.4rem;align-items:baseline}
 .video__pending em{margin-left:auto;font-style:normal;color:var(--ink-45)}
 
@@ -364,7 +384,7 @@ h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.02em;line-height:1.02}
   .mk--vert .mk__mark{width:30%}
 }
 @media (max-width:640px){
-  .plates,.pillars,.swatches,.misuse ul,.apps__rules,.photodir__grid,.channel__videos,.mockups__grid{grid-template-columns:1fr}
+  .plates,.pillars,.swatches,.misuse ul,.apps__rules,.photodir__grid,.channel__videos,.mockups__grid,.lockups__grid{grid-template-columns:1fr}
   .overview__body{gap:2rem}
   .hero__title{font-size:clamp(2.5rem,12.5vw,4.2rem)}
   .dl li{flex-direction:column;align-items:flex-start;gap:.5rem}
