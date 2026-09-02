@@ -95,19 +95,48 @@
   var heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
   if (canDraw) {
-    heroTl.from(".hero__frame path", { drawSVG: "0%", duration: 1.1 }, 0)
-          .from(".hero__ring-circle", { drawSVG: "0%", duration: 1.4, ease: "power2.inOut" }, 0.15);
+    heroTl.from(".hero__frame path", { drawSVG: "0%", duration: 1.1 }, 0);
   } else {
-    heroTl.from([".hero__frame", ".hero__ring"], { opacity: 0, duration: 1 }, 0);
+    heroTl.from(".hero__frame", { opacity: 0, duration: 1 }, 0);
   }
 
   heroTl
     .from(".hero__photo", { scale: 1.12, duration: 1.6, ease: "power2.out" }, 0)
-    .from(".hero__mark", { opacity: 0, scale: 0.88, duration: 1.2, ease: "power3.out" }, 0.35)
     .from(".hero__corner", { opacity: 0, y: 8, duration: 0.6, stagger: 0.1 }, 0.7)
     .from("[data-hero-title]", { opacity: 0, y: 40, duration: 1 }, 0.2)
     .from("[data-hero]", { opacity: 0, y: 24, duration: 0.8, stagger: 0.12 }, 0.4)
     .from(".hero__baseline span", { opacity: 0, duration: 0.6, stagger: 0.1 }, 0.9);
+
+  /* ---------- Animated seal inside the hero: symbol -> ring text letter by letter -> sun (plays once with the intro) ---------- */
+  (function () {
+    var mark = document.querySelector(".hero__mark");
+    if (!mark) return;
+    var paths   = Array.prototype.slice.call(mark.querySelectorAll("path"));
+    var circles = Array.prototype.slice.call(mark.querySelectorAll("circle"));
+    if (paths.length < 14) { heroTl.from(mark, { opacity: 0, scale: 0.9, duration: 1 }, 0.35); return; }
+    var symbol  = paths[0];
+    var sun     = paths[1];
+    var letters = paths.slice(2, 10).concat([circles[0]]).concat(paths.slice(10, 14)).concat([circles[1]]).filter(Boolean);
+
+    var vb = (mark.getAttribute("viewBox") || "0 0 1322.98 1336.65").split(/\s+/).map(Number);
+    var cx = vb[0] + vb[2] / 2, cy = vb[1] + vb[3] / 2, RADIAL = 26;
+    var off = letters.map(function (el) {
+      var b = el.getBBox ? el.getBBox() : { x: cx, y: cy, width: 0, height: 0 };
+      var dx = (b.x + b.width / 2) - cx, dy = (b.y + b.height / 2) - cy, d = Math.hypot(dx, dy) || 1;
+      return { x: -(dx / d) * RADIAL, y: -(dy / d) * RADIAL };
+    });
+
+    var START = 0.35, LSTART = 1.0, EACH = 0.05, LDUR = 0.7;
+    heroTl.set(sun, { opacity: 0, y: -22 }, START);
+    letters.forEach(function (el, i) { heroTl.set(el, { opacity: 0, x: off[i].x, y: off[i].y }, START); });
+    heroTl.from(symbol, { opacity: 0, scale: 0.94, duration: 1.0, ease: "expo.out" }, START);
+    letters.forEach(function (el, i) {
+      heroTl.to(el, { opacity: 1, x: 0, y: 0, duration: LDUR, ease: "expo.out" }, LSTART + i * EACH);
+    });
+    var lend = LSTART + (letters.length - 1) * EACH + LDUR;
+    heroTl.to(sun, { opacity: 1, duration: 0.5, ease: "power2.out" }, lend - 0.35)
+          .to(sun, { y: 0, duration: 1.1, ease: "power3.out" }, lend - 0.35);
+  })();
 
   // Safety net: never leave the hero hidden if the tab was throttled / a tween stalled
   setTimeout(function () { if (heroTl.progress() < 1) heroTl.progress(1); }, 4500);

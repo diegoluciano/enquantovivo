@@ -51,20 +51,13 @@ site/
 
 | Alvo | Efeito |
 |---|---|
-| Hero | frame + anel desenhados (DrawSVG), selo entra com rotação/escala, textos em stagger |
+| Hero | selo `<svg>` inline anima uma vez com a intro: símbolo surge → anel letra por letra → sol nasce. Sem anel decorativo. Moldura desenhada (DrawSVG). |
 | Selo | leve deslocamento vertical no scroll (sem rotação — marca circular) |
 | Foto do hero | parallax vertical no scroll |
 | Seções | `[data-reveal-child]` sobem com fade em stagger ao entrar na viewport |
 | Fotos (direção / mockups) | parallax leve |
 | `prefers-reduced-motion` | tudo desligado, conteúdo visível |
 
-### Hooks para os SVGs decompostos (quando você entregar)
-
-`main.js` já isola a intro do hero. Quando chegarem os vetores separados
-(anel de texto, montanha, sol, ondas), basta trocar o `<img class="badge-spin">`
-do `index.html` por um `<svg>` inline com esses grupos marcados
-`data-anim="ring|mountain|sun|waves"` e adicionar as tweens no bloco
-"HERO intro" — a estrutura de layout não muda.
 
 ## Pendências (sinalizadas como "Em preparação" no site)
 

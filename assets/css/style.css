@@ -122,11 +122,9 @@ h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.02em;line-height:1.02}
 .hero__frame{position:absolute;inset:clamp(14px,2.4vw,26px);width:auto;height:auto;pointer-events:none;z-index:2}
 .hero__frame path{fill:none;stroke:rgba(216,221,184,.8);stroke-width:.3;vector-effect:non-scaling-stroke}
 .hero__badge{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
-.hero__badge>*{grid-area:1/1}
-.hero__ring{width:clamp(220px,46%,360px);aspect-ratio:1/1}
-.hero__ring svg{width:100%;height:100%;overflow:visible}
-.hero__ring-circle{fill:none;stroke:rgba(216,221,184,.6);stroke-width:1.1}
-.hero__mark{width:clamp(150px,30%,244px);height:auto;will-change:transform}
+.hero__mark{width:clamp(170px,34%,272px);height:auto;overflow:visible;will-change:transform;
+  filter:drop-shadow(0 2px 14px rgba(13,22,14,.45))}
+.hero__mark path,.hero__mark circle{transform-box:fill-box;transform-origin:50% 50%}
 .hero__corner{position:absolute;z-index:3;font-size:.68rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(230,233,210,.92);text-shadow:0 1px 8px rgba(13,22,14,.6)}
 .hero__corner--tl{top:clamp(20px,3vw,34px);left:clamp(20px,3vw,34px)}
 .hero__corner--br{bottom:clamp(20px,3vw,34px);right:clamp(20px,3vw,34px)}
