@@ -141,32 +141,42 @@
   var vivo     = paths.slice(10, 14);
   var letters  = enquanto.concat([circles[0]]).concat(vivo).concat([circles[1]]).filter(Boolean);
 
-  // sun hidden and behind the line-art, so the mountain masks it while it rises
-  sun.parentNode.insertBefore(sun, symbol);
-
-  var EACH = 0.10, START = 0.8, LDUR = 0.5;
-  var lettersEnd = START + (letters.length - 1) * EACH + LDUR;
+  // viewBox centre — used to give each ring glyph a tiny radial "settle"
+  var vb = (svg.getAttribute("viewBox") || "0 0 1322.98 1336.65").split(/s+/).map(Number);
+  var cx = vb[0] + vb[2] / 2, cy = vb[1] + vb[3] / 2;
+  var RADIAL = 26;                       // how far in (user units) each glyph starts
+  var offset = letters.map(function (el) {
+    var b = el.getBBox ? el.getBBox() : { x: cx, y: cy, width: 0, height: 0 };
+    var gx = b.x + b.width / 2, gy = b.y + b.height / 2;
+    var dx = gx - cx, dy = gy - cy, d = Math.hypot(dx, dy) || 1;
+    return { x: -(dx / d) * RADIAL, y: -(dy / d) * RADIAL };
+  });
 
   var tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
 
-  // hidden from the first frame
-  tl.set(sun, { opacity: 0, y: 200 }, 0)
-    .set(letters, { opacity: 0, scale: 0.35 }, 0);
+  // hidden from the first frame — sun sits just ABOVE its final spot (never crosses the line-art)
+  tl.set(sun, { opacity: 0, y: -22 }, 0);
+  letters.forEach(function (el, i) {
+    tl.set(el, { opacity: 0, x: offset[i].x, y: offset[i].y }, 0);
+  });
 
   // 1 — symbol appears (no writing, no sun)
-  tl.from(symbol, { opacity: 0, scale: 0.9, duration: 0.9, ease: "power2.out" }, 0);
+  tl.from(symbol, { opacity: 0, scale: 0.94, duration: 1.0, ease: "expo.out" }, 0);
 
-  // 2 — ring text, letter by letter
-  tl.to(letters, { opacity: 1, scale: 1, duration: LDUR, ease: "back.out(2)",
-                   stagger: { each: EACH } }, START);
+  // 2 — ring text settles in, glyph by glyph: fade + short radial drift, expo ease,
+  //     tight cascade that eases its own rhythm
+  var START = 0.85, LDUR = 0.75;
+  letters.forEach(function (el, i) {
+    tl.to(el, { opacity: 1, x: 0, y: 0, duration: LDUR, ease: "expo.out" },
+          START + i * 0.052);
+  });
+  var lettersEnd = START + (letters.length - 1) * 0.052 + LDUR;
 
-  // 3 — sun rises from behind the mountain
-  tl.to(sun, { opacity: 1, duration: 0.25 }, lettersEnd - 0.05)
-    .to(sun, { y: 0, duration: 1.0, ease: "power2.out" }, lettersEnd - 0.05)
-    .to(sun, { y: -6, duration: 0.35, ease: "sine.inOut" })
-    .to(sun, { y: 0, duration: 0.4, ease: "sine.inOut" });
+  // 3 — sun fades in slightly high, then eases gently down into place
+  tl.to(sun, { opacity: 1, duration: 0.55, ease: "power2.out" }, lettersEnd - 0.35)
+    .to(sun, { y: 0, duration: 1.15, ease: "power3.out" }, lettersEnd - 0.35);
 
-  tl.to({}, { duration: 0.8 });
+  tl.to({}, { duration: 0.9 });
 
   window.__TOTAL = tl.duration();
   window.__seek = function (p) { tl.progress(Math.max(0, Math.min(1, p))); };
