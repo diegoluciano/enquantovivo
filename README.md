@@ -36,6 +36,7 @@ site/
 │   ├── logo-animado.html           animação GSAP do selo (loop) — abrir no navegador
 │   ├── logo-animado/               MP4 + WebM(alpha) + GIF, versões branca e escura
 │   └── enquantovivo-logo-animado.zip
+├── guia-feed.html         guia de ritmo do feed (Templates sociais → "Abrir ↗" nos Downloads)
 ├── exports/               saída bruta do gerador de PNG/PDF (não precisa versionar)
 └── svg/                   pasta original entregue (intocada)
 ```
@@ -75,7 +76,7 @@ do `index.html` por um `<svg>` inline com esses grupos marcados
   em `assets/fonts/` — enquanto não estiverem lá, cai no fallback de sistema. Conferir
   direitos de uso/embed da Google Sans antes de publicar.
 - **Nexa Rust Sans** — citada nos vetores do logotipo; uso restrito ao logo, arquivo/licença ainda não fornecidos
-- Ainda pendente: **EPS** e **editáveis (.ai)** (precisam de Illustrator/Inkscape), vinheta/legendas/pacote de vídeo, templates sociais
+- Ainda pendente: **EPS** e **editáveis (.ai)** (precisam de Illustrator/Inkscape), vinheta/legendas/pacote de vídeo
 - Imagens em `assets/img/` são **simulações geradas por IA** para direção visual —
   substituir pelo acervo real do Fábio Mendonça (ou refinar via Magnific/Higgsfield).
 
