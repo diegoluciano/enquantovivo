@@ -125,8 +125,8 @@
   });
 
   /* ---------- Hero photo parallax ---------- */
-  gsap.to(".hero__photo", {
-    yPercent: 10,
+  gsap.fromTo(".hero__photo", { yPercent: 0 }, {
+    yPercent: 8,
     ease: "none",
     scrollTrigger: { trigger: ".hero__panel", start: "top top", end: "bottom top", scrub: true }
   });
@@ -155,7 +155,7 @@
   });
 
   /* ---------- Photo direction subtle parallax ---------- */
-  gsap.utils.toArray(".photodir__grid figure, .mk__stage > img:first-child").forEach(function (img) {
+  gsap.utils.toArray(".photodir__grid img, .mk__stage > img:first-child").forEach(function (img) {
     gsap.fromTo(img, { yPercent: -4 }, {
       yPercent: 4, ease: "none",
       scrollTrigger: { trigger: img, start: "top bottom", end: "bottom top", scrub: true }
