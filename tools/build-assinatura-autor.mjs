@@ -6,7 +6,7 @@ const SITE = "/Volumes/SSD EXTERNO/FREELAS/Enquanto Vivo/Conceito 3/site";
 const SCR = "/private/tmp/claude-501/-Volumes-SSD-EXTERNO-FREELAS-Enquanto-Vivo-Conceito-3-site/20f6f441-21c6-4442-90e5-92fcfb632864/scratchpad";
 
 const GS = `'Google Sans','Google Sans Text','Product Sans',-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif`;
-const NAME = "Fábio Henrique";
+const NAME = "Fábio Mendonça";
 const ROLE = "Viajante · Canal Enquanto Vivo";
 
 // sizes in the same unit space as a 100-unit-tall seal

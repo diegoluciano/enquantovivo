@@ -43,7 +43,7 @@ site/
 ### Gerar de novo os derivados (scratchpad, fora do repo)
 
 - **PNG + PDF:** `node tools/export-png-pdf.mjs` (headless Chrome; lê `assets/svg/`, escreve `exports/` e os `.zip` em `downloads/`).
-- **Assinatura do autor:** `node tools/build-assinatura-autor.mjs` → selo + "Fábio Henrique" + título em **Google Sans (texto vivo, editável)**. Nome/título no topo do script.
+- **Assinatura do autor:** `node tools/build-assinatura-autor.mjs` → selo + "Fábio Mendonça" + título em **Google Sans (texto vivo, editável)**. Nome/título no topo do script.
 - **Logo animado:** `node tools/build-logo-animado-html.mjs` (regenera o HTML embutindo os SVGs), depois `bash tools/build-logo-animado.sh` (frames via Chrome → MP4/GIF/MOV(alpha)/APNG). Efeito: símbolo surge → anel letra por letra → sol nasce por trás da montanha.
 
 ## GSAP — o que está animado
@@ -68,7 +68,7 @@ do `index.html` por um `<svg>` inline com esses grupos marcados
 ## Pendências (sinalizadas como "Em preparação" no site)
 
 - Entregue: selo completo, símbolo isolado, avatar de perfil circular, **assinatura do
-  autor** (selo + Fábio Henrique + título) — 3 cores cada. + pacotes **PNG** e **PDF**. + **logo animado** (MP4/GIF/MOV/APNG).
+  autor** (selo + Fábio Mendonça + título) — 3 cores cada. + pacotes **PNG** e **PDF**. + **logo animado** (MP4/GIF/MOV/APNG).
 - Assinatura do autor: texto vivo em Google Sans; título "Viajante · Canal Enquanto Vivo" a confirmar.
 - Prancha oficial de construção/proporções (os valores atuais são referência)
 - **Google Sans** é a tipografia oficial da marca (títulos + texto). Arquivos `.woff2`
@@ -77,7 +77,7 @@ do `index.html` por um `<svg>` inline com esses grupos marcados
 - **Nexa Rust Sans** — citada nos vetores do logotipo; uso restrito ao logo, arquivo/licença ainda não fornecidos
 - Ainda pendente: **EPS** e **editáveis (.ai)** (precisam de Illustrator/Inkscape), vinheta/legendas/pacote de vídeo, templates sociais
 - Imagens em `assets/img/` são **simulações geradas por IA** para direção visual —
-  substituir pelo acervo real do Fábio Henrique (ou refinar via Magnific/Higgsfield).
+  substituir pelo acervo real do Fábio Mendonça (ou refinar via Magnific/Higgsfield).
 
 ## Paleta
 
