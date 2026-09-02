@@ -12,6 +12,6 @@ eq=saturation=0.5:brightness=-0.06:contrast=1.06,format=rgb24[bg];\
 [1:v]scale=${BW}:-1[mk];[bg][mk]overlay=x=${X}:y=(main_h-overlay_h)/2" \
 -q:v 2 "$DL/enquantovivo-youtube-capa-2560x1440.jpg" -loglevel error
 ffmpeg -y -i "$DL/enquantovivo-youtube-capa-2560x1440.jpg" \
--vf "crop=1546:424:(in_w-1546)/2:(in_h-424)/2" -q:v 3 \
-"$DL/enquantovivo-youtube-capa-mobile-1546x423.jpg" -loglevel error
+-vf "crop=2400:660:80:250" -q:v 3 \
+"$DL/enquantovivo-youtube-capa-mobile.jpg" -loglevel error
 echo "ok"

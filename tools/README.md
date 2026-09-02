@@ -9,4 +9,4 @@ Ajuste os caminhos absolutos no topo de cada script se mover o projeto.
 - `build-logo-animado.sh`       → captura frames do HTML acima e monta MP4 / GIF / MOV(alpha) / APNG
 
 `npm i opentype.js` só é necessário se voltar a usar assinatura em contornos.
-- `build-youtube-capa.sh`       → capa 2560x1440 (foto graduada + selo, selo dentro da área segura) + recorte mobile 1546x423
+- `build-youtube-capa.sh`       → capa 2560x1440 (foto graduada + selo, selo dentro da área segura) + versão mobile (crop mais aberto, selo dentro do enquadramento)
