@@ -1,11 +1,11 @@
 # tools/ — geradores de derivados
 
-Rodados fora do fluxo do site (precisam de Node + headless Chrome + ffmpeg).
+Fora do fluxo do site (precisam de Node + headless Chrome + ffmpeg).
 Ajuste os caminhos absolutos no topo de cada script se mover o projeto.
 
-- `export-png-pdf.mjs`            → PNG (transparente @1x/@2x/@4x) + PDF vetorial dos 8 SVGs → `exports/` + zips em `downloads/`
-- `build-assinatura-simplificada.mjs` → assinatura simplificada (símbolo + logotipo em contornos, Archivo Black provisória)
-- `build-logo-animado.sh`        → captura frames de `downloads/logo-animado.html` e monta MP4 / GIF / MOV(alpha) / APNG
-- `ArchivoBlack-Regular.ttf`     → fonte provisória do logotipo (trocar pela Nexa Rust oficial)
+- `export-png-pdf.mjs`          → PNG (transparente @1x/@2x/@4x) + PDF vetorial dos SVGs → `exports/` + zips em `downloads/`
+- `build-assinatura-autor.mjs`  → assinatura do autor: selo + "Fábio Henrique" + título em Google Sans (texto vivo). Edite NAME/ROLE no topo.
+- `build-logo-animado-html.mjs` → (re)gera `downloads/logo-animado.html` embutindo os 3 SVGs do selo
+- `build-logo-animado.sh`       → captura frames do HTML acima e monta MP4 / GIF / MOV(alpha) / APNG
 
-`npm i opentype.js` antes de rodar o script da assinatura.
+`npm i opentype.js` só é necessário se voltar a usar assinatura em contornos.
