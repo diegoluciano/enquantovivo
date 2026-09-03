@@ -1,0 +1,19 @@
+SELO DE VÍDEO — Enquanto Vivo
+=============================
+Clipe pronto pra edição: o fundo escuro (20%) entra, o selo monta
+(símbolo -> anel letra por letra -> sol), segura, desmonta ao contrário,
+e o fundo sai. Tudo sobre TRANSPARENTE — é só jogar por cima da imagem.
+
+  *-prores4444.mov       ProRes 4444, alpha 10-bit, 1920x1080 @24fps.
+                         Padrão pra Premiere / DaVinci / FCP / After Effects.
+  *-png-sequence.zip     PNGs numerados com transparência (qualidade máxima,
+                         qualquer software). Importar como sequência a 24fps.
+
+branco  = pra imagem escura   ·   escuro = pra imagem clara
+
+Obs.: WebM VP9 com alpha não foi gerado — o ffmpeg desta máquina não exporta
+alpha em VP9. O ProRes 4444 cobre a edição profissional; a sequência PNG
+cobre qualquer outro caso.
+
+enquantovivo-selo-video-preview.mp4 = só demonstração (selo sobre uma imagem
+real, com o fundo a 20%). Não usar na edição — é opaco.
