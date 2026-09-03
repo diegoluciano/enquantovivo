@@ -35,7 +35,10 @@ site/
 │   ├── enquantovivo-pdf.zip        PDF vetorial dos 8 SVGs
 │   ├── logo-animado.html           animação GSAP do selo (loop) — abrir no navegador
 │   ├── logo-animado/               MP4 + WebM(alpha) + GIF, versões branca e escura
-│   └── enquantovivo-logo-animado.zip
+│   ├── enquantovivo-logo-animado.zip
+│   ├── logo-bumper.html            selo de vídeo (scrim 20% + monta/desmonta) sobre transparente
+│   ├── selo-video/                 ProRes 4444 (alpha) + sequência PNG + prévia .mp4 (branca/escura)
+│   └── enquantovivo-selo-video.zip
 ├── guia-feed.html         guia de ritmo do feed (Templates sociais → "Abrir ↗" nos Downloads)
 ├── exports/               saída bruta do gerador de PNG/PDF (não precisa versionar)
 └── svg/                   pasta original entregue (intocada)
@@ -46,6 +49,7 @@ site/
 - **PNG + PDF:** `node tools/export-png-pdf.mjs` (headless Chrome; lê `assets/svg/`, escreve `exports/` e os `.zip` em `downloads/`).
 - **Assinatura do autor:** `node tools/build-assinatura-autor.mjs` → selo + "Fábio Mendonça" + título em **Google Sans (texto vivo, editável)**. Nome/título no topo do script.
 - **Logo animado:** `node tools/build-logo-animado-html.mjs` (regenera o HTML embutindo os SVGs), depois `bash tools/build-logo-animado.sh` (frames via Chrome → MP4/GIF/MOV(alpha)/APNG). Efeito: símbolo surge → anel letra por letra → sol nasce por trás da montanha.
+- **Selo de vídeo (bumper):** `node tools/build-selo-video-html.mjs` (gera `downloads/logo-bumper.html`), depois `node tools/build-selo-video.mjs` (puppeteer-core @1920×1080/24fps → ProRes 4444 `yuva444p10le` com alpha + sequência PNG + prévia H.264 sobre foto). Efeito: scrim `#0D160E` entra a 20% → selo monta → segura → **desmonta ao contrário** → scrim sai. WebM VP9-alpha não sai neste ffmpeg — a sequência PNG cobre esse caso.
 
 ## GSAP — o que está animado
 
